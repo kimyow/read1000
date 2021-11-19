@@ -7,6 +7,16 @@
   pointer-events: none;
 }
 
+.UserImage {
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+}
+
+.UserImageDiv {
+  padding: 20px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
