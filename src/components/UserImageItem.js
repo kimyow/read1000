@@ -1,38 +1,32 @@
-import {Component} from "react";
+import {useEffect, useState} from "react";
 import {getDownloadURL, ref} from "firebase/storage";
+import {fbStorage} from "../firebase/features";
 
-import {getStorage} from "firebase/storage";
 
-class UserImageItem extends Component {
-    state = {
-        imageUrl: null
-    }
+const UserImageItem = ({userItem}) =>  {
+    const [imageUrl, setImageUrl] = useState(null);
+    console.log("UserImageItem =>", userItem);
 
-    componentDidMount() {
-        const storage = getStorage()
-        console.log('UserImageItem componentDidMount =>', this.props.data, storage);
-        let storageRef = ref(storage, `/profile_thumbnails/${this.props.data.email}_${this.props.data.profileId}.png`)
-        console.log('storageRef=', storageRef)
+    useEffect(() => {
+        let storageRef = ref(fbStorage, `/profile_thumbnails/${userItem.email}_${userItem.profileId}.png`)
 
         getDownloadURL(storageRef).then(value => {
             console.log('download_url=', value)
-            this.setState({imageUrl: value})
+            setImageUrl(value)
         });
-    }
+    }, [userItem]);
 
-    render() {
-        console.log('UserImageItem render =>', this.state.imageUrl);
-        if (this.state.imageUrl) {
-            return (
-                <div className="UserImageDiv">
-                    <h2>{this.props.data.email}</h2>
-                    <h4>{this.props.data.read}권 읽음</h4>
-                    <img src={this.state.imageUrl} className="UserImage"/>
-                </div>
-            );
-        } else {
-            return <div/>;
-        }
+    console.log('UserImageItem render =>', imageUrl);
+    if (imageUrl) {
+        return (
+            <div className="UserImageDiv">
+                <h2>{userItem.email}</h2>
+                <h4>{userItem.read}권 읽음</h4>
+                <img src={imageUrl} className="UserImage" alt=""/>
+            </div>
+        );
+    } else {
+        return <div/>;
     }
 }
 

@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5df12b9c-84db-49a9-aac1-1b2cccaec1eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/UserImageItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/UserImageList.js" afterDir="false" />
+    <list default="true" id="5df12b9c-84db-49a9-aac1-1b2cccaec1eb" name="Changes" comment="오늘의 독서왕 표시">
+      <change afterPath="$PROJECT_DIR$/src/components/MyNav.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Signin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/const.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/firebase/features.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/read1000.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/read1000.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserImageItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserImageItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserImageList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserImageList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +42,6 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
@@ -51,8 +57,17 @@
       <option name="presentableId" value="Default" />
       <updated>1637205884182</updated>
       <workItem from="1637205885488" duration="15000" />
-      <workItem from="1637207032975" duration="14593000" />
+      <workItem from="1637207032975" duration="16160000" />
+      <workItem from="1637320133389" duration="37897000" />
     </task>
+    <task id="LOCAL-00001" summary="오늘의 독서왕 표시">
+      <created>1637293877797</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1637293877797</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -68,5 +83,10 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="오늘의 독서왕 표시" />
+    <option name="LAST_COMMIT_MESSAGE" value="오늘의 독서왕 표시" />
   </component>
 </project>
