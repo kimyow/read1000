@@ -1,4 +1,4 @@
-import {ACTION_CHANGE_MODE, SCREEN_MODE_SIGN_IN, SCREEN_MODE_USER_RANK} from "../const";
+import {ACTION_CHANGE_MODE, SCREEN_MODE_SIGN_IN, SCREEN_MODE_USER_RANK_DAILY} from "../const";
 import {fbAuth, googleAuthProvider} from "../firebase/features";
 import {GoogleAuthProvider, signInWithPopup} from "firebase/auth";
 import {useContext} from "react";
@@ -16,7 +16,7 @@ const login = (dispatch) => {
 			const user = result.user;
 			// ...
 			console.log("로그인 완료~!!", user, token);
-			dispatch({type: ACTION_CHANGE_MODE, mode: SCREEN_MODE_USER_RANK})
+			dispatch({type: ACTION_CHANGE_MODE, mode: SCREEN_MODE_USER_RANK_DAILY})
 		}).catch((error) => {
 		// Handle Errors here.
 		const errorCode = error.code;

@@ -1,5 +1,10 @@
 .App {
+  padding: 5px;
   text-align: center;
+}
+
+.MyNav {
+  padding-top: 20px;
 }
 
 .App-logo {
@@ -13,8 +18,16 @@
   padding: 10px;
 }
 
-.UserImageDiv {
-  padding: 20px;
+.BookImage {
+  width: 100px;
+  height: 150px;
+  padding: 10px;
+}
+
+.ReviewItem {
+  width: auto;
+  height: 200px;
+  padding: 10px;
 }
 
 .hidden {
@@ -49,4 +62,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+ul {
+  text-align: center;
 }

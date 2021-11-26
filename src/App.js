@@ -2,12 +2,11 @@ import './App.css';
 
 import {fbAuth} from "./firebase/features";
 import {useEffect, useReducer, useState} from "react";
-import {ACTION_CHANGE_MODE, SCREEN_MODE_SIGN_IN, SCREEN_MODE_USER_RANK} from "./const";
+import {ACTION_CHANGE_MODE, SCREEN_MODE_SIGN_IN, SCREEN_MODE_USER_RANK_DAILY} from "./const";
 import Signin from "./components/Signin";
-import UserImageList from "./components/UserImageList";
+import UserList from "./components/UserList";
 import stateReducer, {initValues, MyContext} from "./hooks/reducer";
 import Button from "react-bootstrap/Button";
-import {Container} from "react-bootstrap";
 import MyNav from "./components/MyNav";
 
 
@@ -58,25 +57,29 @@ function App() {
                 mode: SCREEN_MODE_SIGN_IN});
         } else {
             dispatch({type: ACTION_CHANGE_MODE,
-                mode: SCREEN_MODE_USER_RANK});
+                mode: SCREEN_MODE_USER_RANK_DAILY});
         }
     }, [authUser]);
 
     return (
         <MyContext.Provider value={{state, dispatch}}>
+            <div className="App">
+                <MyNav />
+                <hr
+                    style={{
+                        backgroundColor: "#0D60EA",
+                        height: 1
+                    }}
+                />
 
-            <Container className="p-3">
-                <Container className="p-5 mb-4 bg-light rounded-3">
-                    <MyNav />
-                    <Button className="hidden" onClick={()=>{
-                        logout(dispatch);
-                    }}>
-                        로그아웃
-                    </Button>
-                    <Signin/>
-                    <UserImageList/>
-                </Container>
-            </Container>
+                <Signin/>
+                <UserList/>
+                <Button className="hidden" onClick={()=>{
+                    logout(dispatch);
+                }}>
+                    로그아웃
+                </Button>
+            </div>
         </MyContext.Provider>
     );
 }
