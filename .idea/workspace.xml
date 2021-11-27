@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5df12b9c-84db-49a9-aac1-1b2cccaec1eb" name="Changes" comment="react hooks 사용하도록 구조 변경">
-      <change afterPath="$PROJECT_DIR$/src/components/ReviewItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/useLocalStorage.js" afterDir="false" />
+    <list default="true" id="5df12b9c-84db-49a9-aac1-1b2cccaec1eb" name="Changes" comment="react nav 적용. UI 개선">
+      <change afterPath="$PROJECT_DIR$/src/components/ResponsiveAppBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MyNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MyNav.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Signin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Signin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserImageItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserImageList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/const.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/const.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +53,7 @@
       <updated>1637205884182</updated>
       <workItem from="1637205885488" duration="15000" />
       <workItem from="1637207032975" duration="16160000" />
-      <workItem from="1637320133389" duration="57303000" />
+      <workItem from="1637320133389" duration="65928000" />
     </task>
     <task id="LOCAL-00001" summary="오늘의 독서왕 표시">
       <created>1637293877797</created>
@@ -69,7 +69,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637762627908</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="react nav 적용. UI 개선">
+      <created>1637941517191</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1637941517191</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -90,6 +97,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="오늘의 독서왕 표시" />
     <MESSAGE value="react hooks 사용하도록 구조 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="react hooks 사용하도록 구조 변경" />
+    <MESSAGE value="react nav 적용. UI 개선" />
+    <option name="LAST_COMMIT_MESSAGE" value="react nav 적용. UI 개선" />
   </component>
 </project>

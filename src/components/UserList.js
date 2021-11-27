@@ -19,7 +19,7 @@ import ReviewItem from "./ReviewItem";
 const getWeekOfYear = (currentDate) => {
     const oneJan = new Date(currentDate.getFullYear(),0,1);
     const numberOfDays = Math.floor((currentDate - oneJan) / (24 * 60 * 60 * 1000));
-    return Math.ceil((currentDate.getDay() + 1 + numberOfDays) / 7);
+    return Math.floor((currentDate.getDay() + 1 + numberOfDays) / 7);
 }
 
 const queryCallAsync = async (mode) => {
@@ -108,9 +108,9 @@ const UserList = () => {
     console.log('userItems=', userItems);
     return (
         <div>
-          <ul>
-            {userItems}
-          </ul>
+            <ul>
+                {userItems}
+            </ul>
         </div>
     )
 }

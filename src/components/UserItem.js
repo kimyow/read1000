@@ -6,7 +6,6 @@ import {SCREEN_MODE_FAMOUS_BOOK} from "../const";
 
 const UserItem = ({userItem, screenMode}) =>  {
     const [imageUrl, setImageUrl] = useState(null);
-    let _imageUrl = imageUrl;
     console.log("UserItem =>", userItem, screenMode);
 
     const userUrl = userItem.email ? `${userItem.email}_${userItem.profileId}`: '';
@@ -16,36 +15,35 @@ const UserItem = ({userItem, screenMode}) =>  {
     }
 
     useEffect(() => {
-        if (userItem.email) {
+        if (userItem.email) { // user
             if (downloadUrl === null) {
                 let storageRef = ref(fbStorage, `/profile_thumbnails/${userUrl}.png`)
                 getDownloadURL(storageRef).then(value => {
                     console.log('download_url=', value)
-                    _imageUrl = value;
                     window.localStorage.setItem(userUrl, JSON.stringify(value));
                     setImageUrl(value)
                 });
+            } else {
+                setImageUrl(downloadUrl);
+            }
+        } else { // book
+            if (userItem.imageLinkBig) {
+                setImageUrl(userItem.imageLinkBig);
+            } else if (userItem.imageLink) {
+                setImageUrl(userItem.imageLink);
             }
         }
-    }, [userItem]);
+    }, [userItem, userUrl, downloadUrl]);
 
-    if (userItem.imageLinkBig) {
-        _imageUrl = userItem.imageLinkBig;
-    } else if (userItem.imageLink) {
-        _imageUrl = userItem.imageLink;
-    } else if (userUrl && downloadUrl) {
-        _imageUrl = downloadUrl;
-    }
-
-    console.log('UserItem render =>', _imageUrl);
-    if (_imageUrl) {
+    console.log('UserItem render =>', imageUrl);
+    if (imageUrl) {
         const _className = (screenMode === SCREEN_MODE_FAMOUS_BOOK) ? "BookImage": "UserImage";
         return (
             <div>
                 <h6>{userItem.email ? `${userItem.email}`: `${userItem.title}`}</h6>
                 {userItem.like ? `${userItem.like} 좋아요`:`${userItem.read}권 읽음`}
                 <br/>
-                <img src={_imageUrl} className={_className} alt=""/>
+                <img src={imageUrl} className={_className} alt=""/>
             </div>
         );
     } else {

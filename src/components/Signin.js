@@ -3,7 +3,7 @@ import {fbAuth, googleAuthProvider} from "../firebase/features";
 import {GoogleAuthProvider, signInWithPopup} from "firebase/auth";
 import {useContext} from "react";
 import {MyContext} from "../hooks/reducer";
-import Button from "react-bootstrap/Button";
+import {Button} from "@mui/material";
 
 
 const login = (dispatch) => {

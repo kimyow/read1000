@@ -6,8 +6,7 @@ import {ACTION_CHANGE_MODE, SCREEN_MODE_SIGN_IN, SCREEN_MODE_USER_RANK_DAILY} fr
 import Signin from "./components/Signin";
 import UserList from "./components/UserList";
 import stateReducer, {initValues, MyContext} from "./hooks/reducer";
-import Button from "react-bootstrap/Button";
-import MyNav from "./components/MyNav";
+import ResponsiveAppBar from "./components/ResponsiveAppBar";
 
 
 const useFirebaseAuthentication = () => {
@@ -44,7 +43,7 @@ const logout = (dispatch) => {
 }
 
 
-function App() {
+function App(props) {
     const [state, dispatch] = useReducer(stateReducer, initValues, undefined);
     console.log("App state=>", state);
     const authUser = useFirebaseAuthentication();
@@ -62,23 +61,11 @@ function App() {
     }, [authUser]);
 
     return (
-        <MyContext.Provider value={{state, dispatch}}>
+        <MyContext.Provider value={{state, dispatch, logout}}>
             <div className="App">
-                <MyNav />
-                <hr
-                    style={{
-                        backgroundColor: "#0D60EA",
-                        height: 1
-                    }}
-                />
-
+                <ResponsiveAppBar props={props} user={authUser}/>
                 <Signin/>
                 <UserList/>
-                <Button className="hidden" onClick={()=>{
-                    logout(dispatch);
-                }}>
-                    로그아웃
-                </Button>
             </div>
         </MyContext.Provider>
     );

@@ -3,6 +3,10 @@
   text-align: center;
 }
 
+ul {
+  padding: 1rem;
+}
+
 .MyNav {
   padding-top: 20px;
 }

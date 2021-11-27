@@ -1,4 +1,3 @@
-import {Nav} from "react-bootstrap";
 import {useContext} from "react";
 import {MyContext} from "../hooks/reducer";
 import {ACTION_CHANGE_MODE} from "../const";
@@ -9,7 +8,8 @@ const MyNav = () => {
 	const currentMode = state.mode;
 	console.log("currentMode=", currentMode, typeof(currentMode));
 	return (
-		<div className="MyNav">
+		<div/>
+		/*<div className="MyNav">
 			<Nav className="justify-content-center"
 			     variant="pills"
 			     activeKey={currentMode}
@@ -43,7 +43,7 @@ const MyNav = () => {
 					<Nav.Link eventKey="find-user">친구 찾기</Nav.Link>
 				</Nav.Item>
 			</Nav>
-		</div>
+		</div>*/
 
 
 	);
