@@ -3,7 +3,7 @@ import {fbAuth, googleAuthProvider} from "../firebase/features";
 import {GoogleAuthProvider, signInWithPopup} from "firebase/auth";
 import {useContext} from "react";
 import {MyContext} from "../hooks/reducer";
-import {Button} from "@mui/material";
+import {Button, Container} from "@mui/material";
 
 
 const login = (dispatch) => {
@@ -32,7 +32,6 @@ const login = (dispatch) => {
 
 
 const Signin = () => {
-	// const [state, dispatch] = useReducer(stateReducer, initValues, undefined);
 	const {state, dispatch} = useContext(MyContext);
 	console.log('Signin state=>', state);
 
@@ -47,14 +46,18 @@ const Signin = () => {
 	}
 	console.log("signin general return")
 	return (
-		<div>
-			<h1>Sign in screen</h1>
+		<Container sx={{
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+			marginTop: 20
+		}}>
 			<Button onClick={
 				()=> {
 					login(dispatch);
 				}
 			}>Google 로 로그인</Button>
-		</div>
+		</Container>
 	)
 }
 

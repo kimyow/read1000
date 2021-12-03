@@ -14,6 +14,8 @@ import {fbDB} from "../firebase/features";
 import {useContext} from "react";
 import {MyContext} from "../hooks/reducer";
 import ReviewItem from "./ReviewItem";
+import UserCard from "./UserCard";
+import {Container} from "@mui/material";
 
 
 const getWeekOfYear = (currentDate) => {
@@ -99,7 +101,8 @@ const UserList = () => {
           const item = <ReviewItem key={"" + i} reviewItem={_data}/>
           userItems.push(item);
       } else {
-          const item = <UserItem key={"" + i} userItem={_data} screenMode={mode}/>
+          // const item = <UserItem key={"" + i} userItem={_data} screenMode={mode}/>
+          const item = <UserCard key={"" + i} userItem={_data} screenMode={mode}/>
           userItems.push(item);
       }
       i = i + 1;
@@ -107,11 +110,11 @@ const UserList = () => {
 
     console.log('userItems=', userItems);
     return (
-        <div>
-            <ul>
-                {userItems}
-            </ul>
-        </div>
+        <Container sx={{ display: 'flex', flexDirection: 'column', marginTop: 10, width:"100%",
+            justifyContent: 'center',
+            alignItems: 'center'}}>
+            {userItems}
+        </Container>
     )
 }
 

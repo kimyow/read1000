@@ -17,7 +17,7 @@ import {
 	ACTION_CHANGE_MODE,
 	SCREEN_MODE_BEST_READER,
 	SCREEN_MODE_FAMOUS_BOOK, SCREEN_MODE_FIND_USER,
-	SCREEN_MODE_GOOD_WRITER, SCREEN_MODE_RECENT_REVIEW,
+	SCREEN_MODE_GOOD_WRITER, SCREEN_MODE_RECENT_REVIEW, SCREEN_MODE_SIGN_IN,
 	SCREEN_MODE_USER_RANK_DAILY, SCREEN_MODE_USER_RANK_MONTHLY,
 	SCREEN_MODE_USER_RANK_WEEKLY
 } from "../const";
@@ -31,14 +31,14 @@ const pages = [
 		mode: SCREEN_MODE_GOOD_WRITER,
 		value: '좋은 글을 쓰는 친구들',
 	},
-	{
-		mode: SCREEN_MODE_FAMOUS_BOOK,
-		value: '인기 도서'
-	},
-	{
-		mode: SCREEN_MODE_RECENT_REVIEW,
-		value: '리뷰'
-	},
+	// {
+	// 	mode: SCREEN_MODE_FAMOUS_BOOK,
+	// 	value: '인기 도서'
+	// },
+	// {
+	// 	mode: SCREEN_MODE_RECENT_REVIEW,
+	// 	value: '리뷰'
+	// },
 	{
 		mode: SCREEN_MODE_USER_RANK_DAILY,
 		value: '오늘의 독서왕'
@@ -55,10 +55,10 @@ const pages = [
 		mode: SCREEN_MODE_BEST_READER,
 		value: '베스트 리더'
 	},
-	{
-		mode: SCREEN_MODE_FIND_USER,
-		value: '친구 찾기'
-	}
+	// {
+	// 	mode: SCREEN_MODE_FIND_USER,
+	// 	value: '친구 찾기'
+	// }
 ];
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -88,15 +88,26 @@ HideOnScroll.propTypes = {
 	window: PropTypes.func,
 };
 
-const ResponsiveAppBar = (props) => {
-	const {dispatch, logout} = useContext(MyContext);
-	console.log("ResponsiveAppBar user=>", props);
-	const user = props.user;
+const getDefaultTitle = (mode) => {
 
+	const result = pages.filter(page => mode === page.mode);
+	if (result.length > 0) {
+		console.log("getDefaultTitle=>", result);
+		return result[0].value;
+	} else {
+		return '천권읽기';
+	}
+}
+
+const ResponsiveAppBar = (props) => {
+	const {state, dispatch, logout} = useContext(MyContext);
+	const user = props.user;
 	const [anchorElNav, setAnchorElNav] = useState(null);
 	const [anchorElUser, setAnchorElUser] = useState(null);
 	const [imageUrl, setImageUrl] = useState(null);
-	const [title, setTitle] = useState('천권읽기');
+	const [title, setTitle] = useState(getDefaultTitle(SCREEN_MODE_USER_RANK_DAILY));
+
+	console.log("ResponsiveAppBar title=>", title, state.mode);
 
 	useEffect(() => {
 		if (user) {
@@ -116,6 +127,8 @@ const ResponsiveAppBar = (props) => {
 			}
 		}
 	}, [user]);
+
+
 
 	const handleOpenNavMenu = (event) => {
 		console.log("handleOpenNavMenu=>", event.currentTarget);
@@ -148,6 +161,10 @@ const ResponsiveAppBar = (props) => {
 		setAnchorElUser(null);
 	};
 
+	let _className='';
+	if (state.mode === SCREEN_MODE_SIGN_IN) {
+		_className = "hidden";
+	}
 	return (
 		<HideOnScroll {...props}>
 		<AppBar>

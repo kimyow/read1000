@@ -7,6 +7,7 @@ import Signin from "./components/Signin";
 import UserList from "./components/UserList";
 import stateReducer, {initValues, MyContext} from "./hooks/reducer";
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
+import {Container} from "@mui/material";
 
 
 const useFirebaseAuthentication = () => {
@@ -62,11 +63,15 @@ function App(props) {
 
     return (
         <MyContext.Provider value={{state, dispatch, logout}}>
-            <div className="App">
+            <Container sx={{
+               width: '100%',
+               justifyContent: 'center',
+               alignItems: 'center',
+            }} maxWidth="xs">
                 <ResponsiveAppBar props={props} user={authUser}/>
                 <Signin/>
                 <UserList/>
-            </div>
+            </Container>
         </MyContext.Provider>
     );
 }
