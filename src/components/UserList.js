@@ -16,6 +16,7 @@ import {MyContext} from "../hooks/reducer";
 import ReviewItem from "./ReviewItem";
 import UserCard from "./UserCard";
 import {Container} from "@mui/material";
+import Box from "@mui/material/Box";
 
 
 const getWeekOfYear = (currentDate) => {
@@ -110,11 +111,15 @@ const UserList = () => {
 
     console.log('userItems=', userItems);
     return (
-        <Container sx={{ display: 'flex', flexDirection: 'column', marginTop: 10, width:"100%",
+        <Box marginTop='5em' sx={{
+            width: '100%',
+            display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center'}}>
+            flexDirection: 'row',
+            flexWrap: 'wrap'
+        }}>
             {userItems}
-        </Container>
+        </Box>
     )
 }
 

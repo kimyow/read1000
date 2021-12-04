@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 
 import {fbAuth} from "./firebase/features";
 import {useEffect, useReducer, useState} from "react";
@@ -8,6 +8,7 @@ import UserList from "./components/UserList";
 import stateReducer, {initValues, MyContext} from "./hooks/reducer";
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
 import {Container} from "@mui/material";
+import BookShelf from "./components/BookShelf";
 
 
 const useFirebaseAuthentication = () => {
@@ -45,11 +46,11 @@ const logout = (dispatch) => {
 
 
 function App(props) {
-    const [state, dispatch] = useReducer(stateReducer, initValues, undefined);
+    const [state, dispatch, selectedUser] = useReducer(stateReducer, initValues, undefined);
     console.log("App state=>", state);
     const authUser = useFirebaseAuthentication();
 
-    console.log("app render()...", authUser)
+    console.log("app render()...", authUser);
 
     useEffect(()=>{
         if (authUser === null) {
@@ -63,15 +64,12 @@ function App(props) {
 
     return (
         <MyContext.Provider value={{state, dispatch, logout}}>
-            <Container sx={{
-               width: '100%',
-               justifyContent: 'center',
-               alignItems: 'center',
-            }} maxWidth="xs">
+            <div>
                 <ResponsiveAppBar props={props} user={authUser}/>
                 <Signin/>
                 <UserList/>
-            </Container>
+                <BookShelf/>
+            </div>
         </MyContext.Provider>
     );
 }

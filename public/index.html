@@ -5,6 +5,8 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
     <meta
       name="description"
       content="Web site created using create-react-app"
@@ -24,11 +26,11 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-
-    <title>React App</title>
+    <base href="/"/>
+    <title>천권읽기</title>
   </head>
   <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -40,5 +42,34 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.4.0/dist/sql-asm.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/sql-asm.js" integrity="sha512-FDvWz56KqBhZfsiX0lRmJbKX/GBMHolmWEAyj0Oi2rJMCYHiK8LcCVXveSQhsSgwruGiysOQHC+NIe1CyGRa4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--    <script type="text/javascript" src="../src/sqlite.js"></script>-->
+
+<!--    <script>-->
+<!--      let SQL_GLOBAL = null;-->
+<!--      config = {-->
+<!--        locateFile: filename => `/dist/${filename}`-->
+<!--      }-->
+<!--      // The `initSqlJs` function is globally provided by all of the main dist files if loaded in the browser.-->
+<!--      // We must specify this locateFile function if we are loading a wasm file from anywhere other than the current html page's folder.-->
+<!--      initSqlJs(config).then(SQL => {-->
+<!--        SQL_GLOBAL = SQL;-->
+<!--        console.log("SQL", SQL);-->
+<!--        const url = "https://firebasestorage.googleapis.com/v0/b/readbooks-164200.appspot.com/o/databases%2Fibilivu%40hanmail.net.db?alt=media&token=80f69263-2f9f-4fc9-ad03-1e690f77fdc4";-->
+<!--        const xhr = new XMLHttpRequest();-->
+<!--        xhr.responseType = 'arraybuffer';-->
+<!--        xhr.onload = function(event) {-->
+<!--          const blob = xhr.response;-->
+<!--          console.log("downloaded blob=", typeof(blob), blob);-->
+<!--          const uInt8Array = new Uint8Array(blob);-->
+<!--          const db = new SQL.Database(uInt8Array);-->
+<!--          const contents = db.exec("SELECT * FROM tbl_favorite");-->
+<!--          console.log("contents ==>", contents);-->
+<!--        };-->
+<!--        xhr.open('GET', url);-->
+<!--        xhr.send();-->
+<!--      });-->
+<!--    </script>-->
   </body>
 </html>

@@ -1,0 +1,19 @@
+.bookImg {
+    margin-top: 5rem;
+    width: 90px;
+    height: 130px;
+    object-fit: cover;
+}
+
+.image {
+    position:relative;
+}
+
+.image .text {
+    position:absolute;
+    top:110px;
+    left:5px;
+    right: 5px;
+    width: 80px;
+    text-align: match-parent;
+}

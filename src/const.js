@@ -9,6 +9,8 @@ export const SCREEN_MODE_FAMOUS_BOOK = "famous-book";
 export const SCREEN_MODE_RECENT_REVIEW = "recent-review";
 export const SCREEN_MODE_BEST_READER = "best-reader";
 export const SCREEN_MODE_FIND_USER = "find-user";
+export const SCREEN_MODE_BOOK_SHELF = "book-shelf";
 
 export const ACTION_CHANGE_MODE = "change-mode";
 export const ACTION_USER_RANK_DATA_RECEIVED = "user-rank-data-received";
+export const ACTION_USER_SELECTED = "user-selected";

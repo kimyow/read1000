@@ -1,11 +1,18 @@
 import React from 'react';
-import {ACTION_CHANGE_MODE, ACTION_USER_RANK_DATA_RECEIVED, SCREEN_MODE_INIT} from "../const";
+import {
+	ACTION_CHANGE_MODE,
+	ACTION_USER_RANK_DATA_RECEIVED,
+	ACTION_USER_SELECTED,
+	SCREEN_MODE_BOOK_SHELF,
+	SCREEN_MODE_INIT
+} from "../const";
 
 export const MyContext = React.createContext({});
 
 export const initValues = {
 	mode: SCREEN_MODE_INIT,
-	userRankList: null
+	userRankList: null,
+	selectedUser: null
 }
 
 export const stateReducer = (state, action) => {
@@ -21,6 +28,13 @@ export const stateReducer = (state, action) => {
 		case ACTION_USER_RANK_DATA_RECEIVED: {
 			newState = Object.assign({}, state, {
 				userRankList: action.userRankList
+			})
+			break;
+		}
+		case ACTION_USER_SELECTED: {
+			newState = Object.assign({}, state, {
+				selectedUser: action.user,
+				mode: SCREEN_MODE_BOOK_SHELF
 			})
 			break;
 		}
