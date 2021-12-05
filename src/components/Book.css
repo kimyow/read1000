@@ -5,6 +5,13 @@
     object-fit: cover;
 }
 
+.bookImgLarge {
+    margin-top: 5rem;
+    width: 120px;
+    height: 160px;
+    object-fit: cover;
+}
+
 .image {
     position:relative;
 }
