@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5df12b9c-84db-49a9-aac1-1b2cccaec1eb" name="Changes" comment="react nav 적용. material ui library 적용 3">
+    <list default="true" id="5df12b9c-84db-49a9-aac1-1b2cccaec1eb" name="Changes" comment="도서 정보 화면 보완&#10;읽은 사람 리스트 / 리뷰 리스트 추가">
+      <change afterPath="$PROJECT_DIR$/src/components/AvatarList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Review.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ReviewList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/UserAvatar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Book.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Book.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Book.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Book.js" afterDir="false" />
@@ -56,7 +60,7 @@
       <updated>1637205884182</updated>
       <workItem from="1637205885488" duration="15000" />
       <workItem from="1637207032975" duration="16160000" />
-      <workItem from="1637320133389" duration="117156000" />
+      <workItem from="1637320133389" duration="130832000" />
     </task>
     <task id="LOCAL-00001" summary="오늘의 독서왕 표시">
       <created>1637293877797</created>
@@ -100,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638584489832</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="react nav 적용. material ui library 적용 3">
+      <created>1638666072599</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1638666072599</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +136,7 @@
     <MESSAGE value="react nav 적용. material ui library 적용" />
     <MESSAGE value="react nav 적용. material ui library 적용 2" />
     <MESSAGE value="react nav 적용. material ui library 적용 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="react nav 적용. material ui library 적용 3" />
+    <MESSAGE value="도서 정보 화면 보완&#10;읽은 사람 리스트 / 리뷰 리스트 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="도서 정보 화면 보완&#10;읽은 사람 리스트 / 리뷰 리스트 추가" />
   </component>
 </project>

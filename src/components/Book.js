@@ -6,13 +6,17 @@ import {
 	DialogActions,
 	DialogContent,
 	DialogContentText,
-	DialogTitle
+	DialogTitle, Divider
 } from "@mui/material";
 import {useEffect, useState} from "react";
 import {getDownloadURL, ref} from "firebase/storage";
 import {fbDB, fbStorage} from "../firebase/features";
 import './Book.css';
-import {collection, doc, getDoc, getDocs, limit, orderBy, query, where} from "firebase/firestore";
+import {doc, getDoc} from "firebase/firestore";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import AvatarList from "./AvatarList";
+import ReviewList from "./ReviewList";
 
 const dialogStyle = {
 	display: 'flex',
@@ -79,13 +83,12 @@ const Book = ({book}) => {
 		} else {
 			setImageUrl(bookThumbnailUrl);
 		}
-	}, )
+	}, []);
 
 	const readDate = +book[14];
 	const date = new Date(readDate);
 	console.log('read date=', date);
 	const dateStr = `${date.getFullYear()}년 ${date.getMonth()+1}월 ${date.getDate()}일`;
-
 
 	return (
 		<div>
@@ -100,7 +103,7 @@ const Book = ({book}) => {
 					imageUrl && imageUrl.startsWith("http") ?
 						<img onClick={handleClickOpen} className='bookImg' src={imageUrl} alt={book[2]}/> :
 						<div onClick={handleClickOpen} className="image">
-							<img className='bookImg' src=""/>
+							<img className='bookImg' src="" alt="No image"/>
 								<div className="text">
 									<h6>{book[2]}</h6>
 								</div>
@@ -110,36 +113,47 @@ const Book = ({book}) => {
 			<Dialog
 				open={open}
 				onClose={handleClose}
-				aria-labelledby="alert-dialog-title"
-				aria-describedby="alert-dialog-description"
+				aria-labelledby="customized-dialog-title"
+				aria-describedby="modal-modal-description"
+				scroll={'paper'}
 			>
-				<DialogTitle id="alert-dialog-title">
-					{book[2]}
-				</DialogTitle>
-				<DialogContent sx={dialogStyle}>
-					<img className='bookImgLarge' src={imageBigUrl? imageBigUrl: imageUrl? imageUrl: ""} alt={book[2]}/>
-				</DialogContent>
-				<DialogContent>
-					<DialogContentText id="alert-dialog-description">
+				<DialogContent id="modal-modal-description" sx={{ mt: 2 }}>
+					<DialogTitle id="modal-modal-title" variant="h6" component="h2">
+						{book[2]}
+					</DialogTitle>
+
+					<Box sx={dialogStyle}>
+						<img className='bookImgLarge' src={imageBigUrl? imageBigUrl: imageUrl? imageUrl: ""} alt={book[2]}/>
+					</Box>
+					<Typography id="modal-modal-description" sx={{ mt: 2 }}>
 						<span style={{color: 'red'}}>{dateStr}</span>에 읽었습니다.
-					</DialogContentText>
-				</DialogContent>
-				{/* book details */}
-				<DialogContent sx={dialogStyle}>
+					</Typography>
 					{
 						(bookDetails !== null) ?
 							bookDetails.read ?
-						<DialogContentText id="alert-dialog-description">
-								천권읽기 회원 총 <span style={{color: 'red'}}>{bookDetails.read}</span> 명이 읽었습니다.
-						</DialogContentText> : <div/> : <CircularProgress />
+								<div>
+									<Typography id="modal-modal-description" sx={{ mt: 2 }}>
+										천권읽기 회원 총 <span style={{color: 'red'}}>{bookDetails.read}</span> 명이 읽었습니다.
+									</Typography>
+									<DialogContent>
+										<AvatarList style={{
+											display: 'flex',
+											justifyContent: 'center',
+											flexDirection: 'row',
+											flexWrap: 'wrap'
+										}} users={bookDetails.readPeople}/>
+									</DialogContent>
+								</div>: <div/> : <CircularProgress />
 
 					}
-				</DialogContent>
-
-				<DialogContent>
 					<DialogContentText id="alert-dialog-description">
-						{book[7]}
+						<Typography id="modal-modal-description" sx={{ mt: 3 }}>
+							{book[7]}
+						</Typography>
 					</DialogContentText>
+
+					<Divider sx={{mt:2}}/>
+					<ReviewList isbn={book[12]}/>
 				</DialogContent>
 				<DialogActions>
 					{
