@@ -1,23 +1,26 @@
 import {useContext, useEffect, useState} from "react";
 import {MyContext} from "../hooks/reducer";
 import {SCREEN_MODE_BOOK_SHELF} from "../const";
-import {Container, ImageList, ImageListItem} from "@mui/material";
 import {getDownloadURL, ref} from "firebase/storage";
 import {fbStorage} from "../firebase/features";
 import Book from "./Book";
 import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import UserAvatar from "./UserAvatar";
 
 
 const BookShelf = () => {
-	const {state, dispatch} = useContext(MyContext);
+	const {state} = useContext(MyContext);
 	const [contents, setContents] = useState([]);
 	console.log('BookShelf state=>', state);
 	const mode = state.mode;
+	const user = state.selectedUser;
 
 	useEffect(()=> {
-
-		if (state.selectedUser) {
-			let storageRef = ref(fbStorage, `/databases/${state.selectedUser}.db`)
+		if (user) {
+			console.log('BookShelf download db...', user);
+			setContents([]);
+			let storageRef = ref(fbStorage, `/databases/${user.email}.db`)
 			getDownloadURL(storageRef).then(value => {
 				console.log('download_url=', value)
 				window.initSqlJs({
@@ -41,7 +44,7 @@ const BookShelf = () => {
 				});
 			});
 		}
-	}, [state.selectedUser]);
+	}, [user]);
 
 	if (mode !== SCREEN_MODE_BOOK_SHELF) {
 		return (
@@ -51,27 +54,30 @@ const BookShelf = () => {
 
 	console.log('BookShelf render() ===>', mode)
 
-	let books = [];
-	let i = 0;
-	while (i < contents.length && i < 100) {
-		const content = contents[i];
-		// console.log("content====>", content);
-		const book = <Book key={"" + i} book={content}/>
-		books.push(book);
-		i = i + 1;
-	}
+	const books = contents.slice(0, 100);
 
 	return (
-		<Box marginBottom='5em'
-			sx={{
+		<>
+			<Box marginTop='5rem' padding='1rem' sx={{
 				width: '100%',
 				display: 'flex',
 				justifyContent: 'center',
 				flexDirection: 'row',
 				flexWrap: 'wrap'
 			}}>
-			{books}
-		</Box>
+				<UserAvatar user={user} /> <span style={{ marginLeft: '10px', padding: '5px'}}>{user.profileName}</span>
+			</Box>
+			<Box
+				sx={{
+					width: '100%',
+					display: 'flex',
+					justifyContent: 'center',
+					flexDirection: 'row',
+					flexWrap: 'wrap'
+				}}>
+				{books.map((book, index) => <Book key={"" + index} book={book}/>)}
+			</Box>
+		</>
 	)
 }
 

@@ -17,7 +17,7 @@ import {
 	ACTION_CHANGE_MODE,
 	SCREEN_MODE_BEST_READER,
 	SCREEN_MODE_FAMOUS_BOOK, SCREEN_MODE_FIND_USER,
-	SCREEN_MODE_GOOD_WRITER, SCREEN_MODE_RECENT_REVIEW, SCREEN_MODE_SIGN_IN,
+	SCREEN_MODE_GOOD_WRITER, SCREEN_MODE_INIT, SCREEN_MODE_RECENT_REVIEW, SCREEN_MODE_SIGN_IN,
 	SCREEN_MODE_USER_RANK_DAILY, SCREEN_MODE_USER_RANK_MONTHLY,
 	SCREEN_MODE_USER_RANK_WEEKLY
 } from "../const";
@@ -105,21 +105,20 @@ const ResponsiveAppBar = (props) => {
 	const [anchorElNav, setAnchorElNav] = useState(null);
 	const [anchorElUser, setAnchorElUser] = useState(null);
 	const [imageUrl, setImageUrl] = useState(null);
-	const [title, setTitle] = useState(getDefaultTitle(SCREEN_MODE_USER_RANK_DAILY));
+	const [title, setTitle] = useState(getDefaultTitle(SCREEN_MODE_INIT));
 
 	console.log("ResponsiveAppBar title=>", title, state.mode);
 
 	useEffect(() => {
 		if (user) {
 			const userUrl = `${user.email}`;
-			const downloadUrl = user.photoURL; //JSON.parse(window.localStorage.getItem(userUrl));
+			const downloadUrl = user.photoURL;
 			console.log("ResponsiveAppBar downloadUrl=>", downloadUrl);
 
 			if (!downloadUrl) {
 				let storageRef = ref(fbStorage, `/profile_thumbnails/${userUrl}.png`)
 				getDownloadURL(storageRef).then(value => {
 					console.log('Me download_url=', value)
-					window.localStorage.setItem(userUrl, JSON.stringify(value));
 					setImageUrl(value)
 				});
 			} else {
@@ -149,6 +148,7 @@ const ResponsiveAppBar = (props) => {
 			logout(dispatch);
 			return;
 		}
+
 		if (item.target.dataset.index) {
 			dispatch({type: ACTION_CHANGE_MODE, mode: item.target.dataset.index});
 		} else if(item.target.parentElement.dataset.index) {

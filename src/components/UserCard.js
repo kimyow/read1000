@@ -5,7 +5,7 @@ import {getDownloadURL, ref} from "firebase/storage";
 import {fbDB, fbStorage} from "../firebase/features";
 import {doc, getDoc} from "firebase/firestore";
 import {
-	ACTION_CHANGE_MODE, ACTION_USER_SELECTED, SCREEN_MODE_BOOK_SHELF,
+	ACTION_USER_SELECTED,
 	SCREEN_MODE_GOOD_WRITER,
 	SCREEN_MODE_USER_RANK_DAILY,
 	SCREEN_MODE_USER_RANK_MONTHLY,
@@ -13,47 +13,46 @@ import {
 } from "../const";
 import {MyContext} from "../hooks/reducer";
 
-
 const queryClientInfo = async (email, profileId) => {
 	const q = doc(fbDB, 'ClientInfoDataBase', `${email}_${profileId}`);
 	return await getDoc(q);
 }
 
-const handleCardClick = (dispatch, email) => {
-	console.log(email);
-	dispatch({type: ACTION_USER_SELECTED, user: email});
+const handleCardClick = (dispatch, clientInfo) => {
+	dispatch({type: ACTION_USER_SELECTED, user: clientInfo});
 }
 
 const UserCard = ({userItem, screenMode}) => {
 	const {dispatch} = useContext(MyContext);
 	const userUrl = userItem.email ? `${userItem.email}_${userItem.profileId}`: '';
-	const cachedUrl = JSON.parse(window.localStorage.getItem(userUrl));
-	const [imageUrl, setImageUrl] = useState(cachedUrl);
+	const [imageUrl, setImageUrl] = useState(null);
 	const [clientInfo, setClientInfo] = useState({});
-
 	console.log("UserCard render()...", userItem);
 
 	useEffect(() => {
-		if (!imageUrl) {
+		try {
 			let storageRef = ref(fbStorage, `/profile_thumbnails/${userUrl}.png`)
 			getDownloadURL(storageRef).then(value => {
 				console.log('download_url=', value)
 				window.localStorage.setItem(userUrl, JSON.stringify(value));
 				setImageUrl(value)
 			});
-		} else {
-			setImageUrl(cachedUrl);
+		} catch (e) {
+
 		}
 	}, [userItem]);
 
 	useEffect(()=> {
-		if (userItem) {
+		try {
 			queryClientInfo(userItem.email, userItem.profileId).then(doc => {
 				console.log("clientInfo =>", doc.data());
 				setClientInfo(doc.data());
 			});
+		} catch (e) {
+
 		}
-	}, []);
+
+	}, [userItem]);
 
 	let readNum = '';
 
@@ -70,7 +69,7 @@ const UserCard = ({userItem, screenMode}) => {
 	return (
 		<Card sx={{ width: 280, minWidth: 245, maxWidth: 345, margin: 1}}>
 			<CardActionArea
-				onClick={() => {handleCardClick(dispatch, userItem.email);}}>
+				onClick={() => {handleCardClick(dispatch, clientInfo);}}>
 				<CardMedia
 					component="img"
 					alt="profile image"

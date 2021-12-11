@@ -1,6 +1,4 @@
-import UserItem from "./UserItem";
 import {
-    ACTION_USER_RANK_DATA_RECEIVED,
     SCREEN_MODE_BEST_READER,
     SCREEN_MODE_FAMOUS_BOOK,
     SCREEN_MODE_GOOD_WRITER,
@@ -11,11 +9,9 @@ import {
 } from "../const";
 import {collection, getDocs, limit, orderBy, query, where} from "firebase/firestore";
 import {fbDB} from "../firebase/features";
-import {useContext} from "react";
+import {useContext, useEffect, useMemo, useState} from "react";
 import {MyContext} from "../hooks/reducer";
-import ReviewItem from "./ReviewItem";
 import UserCard from "./UserCard";
-import {Container} from "@mui/material";
 import Box from "@mui/material/Box";
 
 
@@ -30,6 +26,10 @@ const queryCallAsync = async (mode) => {
     let path = ``;
     let q = null;
 
+    console.log(mode);
+
+    const retrieveNum = 4;
+
     if (mode === SCREEN_MODE_USER_RANK_DAILY) {
         path = `UserRank/Rank_Day_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}/Rank_Day_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}`;
     } else if (mode === SCREEN_MODE_USER_RANK_WEEKLY) {
@@ -40,76 +40,84 @@ const queryCallAsync = async (mode) => {
         path = `ClientInfoDataBase`;
     } else if (mode === SCREEN_MODE_GOOD_WRITER) {
         path = "ClientInfoDataBase";
-        q = query(collection(fbDB, path), where("like", ">", 0), orderBy("like", "desc"), limit(20));
+        q = query(collection(fbDB, path), where("like", ">", 0), orderBy("like", "desc"), limit(retrieveNum));
     } else if (mode === SCREEN_MODE_FAMOUS_BOOK) {
         path = 'Books';
     } else if (mode === SCREEN_MODE_RECENT_REVIEW) {
         path = "MessageDataBase";
-        q = query(collection(fbDB, path), orderBy("updatedDate", "desc"), limit(20));
+        q = query(collection(fbDB, path), orderBy("updatedDate", "desc"), limit(retrieveNum));
     }
     console.log("query path = ", path);
+
+    if (!path) {
+        return new Promise((resolve) => {
+            resolve([]);
+        });
+    }
+
     if (q === null)
-        q = query(collection(fbDB, path), where("read", ">", 0), orderBy("read", "desc"), limit(20));
+        q = query(collection(fbDB, path), where("read", ">", 0), orderBy("read", "desc"), limit(retrieveNum));
     return await getDocs(q)
 }
 
-const LoadData = (mode, dispatch) => {
-
-  queryCallAsync(mode).then(r => {
-    let itemList = [];
-    r.forEach((doc) => {
-      const data = doc.data();
-        itemList.push(data);
-
-    });
-    window.localStorage.setItem(mode, JSON.stringify(itemList));
-    dispatch({type: ACTION_USER_RANK_DATA_RECEIVED, userRankList: itemList});
-  });
-}
-
-
 const UserList = () => {
-    const {state, dispatch} = useContext(MyContext);
-    console.log('UserList state=>', state);
+    const {state} = useContext(MyContext);
+    const [error, setError] = useState(null);
+    const [userList, setUserList] = useState(null);
     const mode = state.mode;
-
-    const userList = JSON.parse(window.localStorage.getItem(mode));
     console.log('################ UserList render() userList=>', mode, userList);
 
-    if (mode !== SCREEN_MODE_USER_RANK_DAILY && mode !== SCREEN_MODE_USER_RANK_MONTHLY && mode !== SCREEN_MODE_USER_RANK_WEEKLY
-        && mode !== SCREEN_MODE_BEST_READER && mode !== SCREEN_MODE_GOOD_WRITER && mode !== SCREEN_MODE_FAMOUS_BOOK
-        && mode !== SCREEN_MODE_RECENT_REVIEW) {
-      return (
-          <div className="hidden"/>
-      )
-    }
+    useEffect( () => {
+        try {
+            setError(null);
+            setUserList(null);
+            queryCallAsync(mode).then(r => {
+                let itemList = [];
+                r.forEach((doc) => {
+                    const data = doc.data();
+                    itemList.push(data);
+                });
+                console.log("UserList ===> itemList ==> ", itemList);
+                setUserList(itemList);
+            });
+        } catch (e) {
+            setError(e);
+        }
+    }, [mode]);
 
-    if (!userList) {
-        console.log("try to download...")
-        LoadData(mode, dispatch);
+    const currentMode = useMemo(() => {
+
+    }, []);
+
+    if (mode !== SCREEN_MODE_USER_RANK_MONTHLY &&
+        mode !== SCREEN_MODE_USER_RANK_WEEKLY &&
+        mode !== SCREEN_MODE_USER_RANK_DAILY &&
+        mode !== SCREEN_MODE_BEST_READER &&
+        mode !== SCREEN_MODE_GOOD_WRITER)
         return (
-            <div>
-                <h1>데이타 로딩중...</h1>
-            </div>
+            <div />
         )
-    }
 
-    let userItems = [];
-    let i = 0;
-    while (i < userList.length) {
-      const _data = userList[i];
-      if (mode === SCREEN_MODE_RECENT_REVIEW) {
-          const item = <ReviewItem key={"" + i} reviewItem={_data}/>
-          userItems.push(item);
-      } else {
-          // const item = <UserItem key={"" + i} userItem={_data} screenMode={mode}/>
-          const item = <UserCard key={"" + i} userItem={_data} screenMode={mode}/>
-          userItems.push(item);
-      }
-      i = i + 1;
-    }
+    if (error) return (
+        <Box marginTop='10em' sx={{
+            textAlign: 'center',
+            verticalAlign: 'middle',
+            height: '100rem'
+        }}>
+            <h5>데이터 로딩중에 오류가 발생했습니다. {error}</h5>
+        </Box>
+    );
 
-    console.log('userItems=', userItems);
+    if (userList === null) return (
+        <Box marginTop='10em' sx={{
+            textAlign: 'center',
+            verticalAlign: 'middle',
+            height: '100rem'
+        }}>
+            <h5>데이타를 로딩중입니다...</h5>
+        </Box>
+    );
+
     return (
         <Box marginTop='5em' sx={{
             width: '100%',
@@ -118,7 +126,13 @@ const UserList = () => {
             flexDirection: 'row',
             flexWrap: 'wrap'
         }}>
-            {userItems}
+            {
+                userList && userList.length > 0 ?
+                        userList.map((user, i) => <UserCard key={"" + i} userItem={user} screenMode={mode}/>) :
+                    <div>
+                        <h2>데이타를 로딩중입니다...</h2>
+                    </div>
+            }
         </Box>
     )
 }

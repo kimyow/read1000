@@ -1,5 +1,4 @@
 .bookImg {
-    margin-top: 5rem;
     width: 90px;
     height: 130px;
     object-fit: cover;
@@ -19,7 +18,7 @@
 
 .image .text {
     position:absolute;
-    top:110px;
+    top:30px;
     left:5px;
     right: 5px;
     width: 80px;

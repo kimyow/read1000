@@ -73,6 +73,12 @@ const Book = ({book}) => {
 		window.open(book[10]);
 	};
 
+	const handleOnImageError = (e) => {
+		console.log('handleOnImageError === ', e.target.src, imageUrl, e);
+		if (e.target.src && imageUrl && e.target.src !== imageUrl)
+			e.target.src = imageUrl;
+	}
+
 	useEffect(() => {
 		if (bookThumbnailUrl.startsWith("gs://")) {
 			let storageRef = ref(fbStorage, bookThumbnailUrl);
@@ -103,7 +109,7 @@ const Book = ({book}) => {
 					imageUrl && imageUrl.startsWith("http") ?
 						<img onClick={handleClickOpen} className='bookImg' src={imageUrl} alt={book[2]}/> :
 						<div onClick={handleClickOpen} className="image">
-							<img className='bookImg' src="" alt="No image"/>
+							<img className='bookImg' src="" alt=""/>
 								<div className="text">
 									<h6>{book[2]}</h6>
 								</div>
@@ -123,7 +129,8 @@ const Book = ({book}) => {
 					</DialogTitle>
 
 					<Box sx={dialogStyle}>
-						<img className='bookImgLarge' src={imageBigUrl? imageBigUrl: imageUrl? imageUrl: ""} alt={book[2]}/>
+						<img className='bookImgLarge' src={imageBigUrl? imageBigUrl: imageUrl? imageUrl: ""} alt={book[2]}
+						     onError={handleOnImageError}/>
 					</Box>
 					<Typography id="modal-modal-description" sx={{ mt: 2 }}>
 						<span style={{color: 'red'}}>{dateStr}</span>에 읽었습니다.

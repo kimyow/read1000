@@ -1,14 +1,12 @@
-// import './App.css';
-
 import {fbAuth} from "./firebase/features";
 import {useEffect, useReducer, useState} from "react";
-import {ACTION_CHANGE_MODE, SCREEN_MODE_SIGN_IN, SCREEN_MODE_USER_RANK_DAILY} from "./const";
+import {ACTION_CHANGE_MODE, SCREEN_MODE_INIT, SCREEN_MODE_SIGN_IN} from "./const";
 import Signin from "./components/Signin";
 import UserList from "./components/UserList";
 import stateReducer, {initValues, MyContext} from "./hooks/reducer";
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
-import {Container} from "@mui/material";
 import BookShelf from "./components/BookShelf";
+import Home from "./components/Home";
 
 
 const useFirebaseAuthentication = () => {
@@ -46,7 +44,7 @@ const logout = (dispatch) => {
 
 
 function App(props) {
-    const [state, dispatch, selectedUser] = useReducer(stateReducer, initValues, undefined);
+    const [state, dispatch] = useReducer(stateReducer, initValues, undefined);
     console.log("App state=>", state);
     const authUser = useFirebaseAuthentication();
 
@@ -58,17 +56,18 @@ function App(props) {
                 mode: SCREEN_MODE_SIGN_IN});
         } else {
             dispatch({type: ACTION_CHANGE_MODE,
-                mode: SCREEN_MODE_USER_RANK_DAILY});
+                mode: SCREEN_MODE_INIT});
         }
     }, [authUser]);
 
     return (
         <MyContext.Provider value={{state, dispatch, logout}}>
             <div>
-                <ResponsiveAppBar props={props} user={authUser}/>
-                <Signin/>
-                <UserList/>
-                <BookShelf/>
+                <ResponsiveAppBar props={props} user={authUser} />
+                <Signin />
+                <Home />
+                <UserList />
+                <BookShelf />
             </div>
         </MyContext.Provider>
     );
