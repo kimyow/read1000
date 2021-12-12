@@ -2,6 +2,17 @@
     width: 90px;
     height: 130px;
     object-fit: cover;
+    cursor: pointer;
+}
+
+.bookImgContainer {
+    width: 90px;
+    height: 140px;
+}
+
+.bookShelfCard {
+    margin-top: 4rem;
+    padding: 1rem;
 }
 
 .bookImgLarge {
@@ -23,4 +34,39 @@
     right: 5px;
     width: 80px;
     text-align: match-parent;
+}
+
+.dialogStyle {
+    max-height: 100%;
+}
+
+@media screen and (max-width: 600px){
+    .bookImg {
+        width: 60px;
+        height: 85px;
+        object-fit: cover;
+    }
+
+    .bookShelfCard {
+        margin-top: 3rem;
+        padding: 0.8rem;
+    }
+
+    .image .text {
+        position:absolute;
+        top:20px;
+        left:5px;
+        right: 5px;
+        width: 65px;
+        text-align: match-parent;
+    }
+
+    .dialogStyle {
+        max-height: 80%;
+    }
+
+    .bookImgContainer {
+        width: 70px;
+        height: 90px;
+    }
 }

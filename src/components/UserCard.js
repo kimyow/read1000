@@ -1,5 +1,4 @@
-import {Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Slider} from "@mui/material";
-import Typography from "@mui/material/Typography";
+import {Card,Slider} from "@mui/material";
 import cx from 'clsx';
 import {memo, useContext, useEffect, useState} from "react";
 import {getDownloadURL, ref} from "firebase/storage";
@@ -26,7 +25,7 @@ const useStyles = makeStyles(({spacing, palette}) => {
 			display: 'flex',
 			padding: spacing(2),
 			minWidth: 288,
-			width: 300,
+			width: 350,
 			margin: spacing(1),
 			borderRadius: 12,
 			boxShadow: '0 2px 4px 0 rgba(138, 148, 159, 0.2)',
@@ -36,8 +35,12 @@ const useStyles = makeStyles(({spacing, palette}) => {
 			'& > *:nth-child(2)': {
 				flex: 'auto',
 			},
+			cursor: 'pointer'
 		},
-		avatar: {},
+		avatar: {
+			width: 100,
+			height: 100
+		},
 		heading: {
 			fontFamily: family,
 			fontSize: 16,
@@ -104,7 +107,7 @@ const UserCard = memo(({userItem, screenMode}) => {
 		} catch (e) {
 
 		}
-	}, [userItem]);
+	}, [userItem, userUrl]);
 
 	useEffect(()=> {
 		try {
@@ -156,44 +159,6 @@ const UserCard = memo(({userItem, screenMode}) => {
 			</Box>
 		</Card>
 	);
-
-	// return (
-	// 	<Card sx={{ width: 280, minWidth: 245, maxWidth: 345, margin: 1}}>
-	// 		<CardActionArea
-	// 			onClick={() => {handleCardClick(dispatch, clientInfo);}}>
-	// 			<CardMedia
-	// 				component="img"
-	// 				alt="profile image"
-	// 				height="300em"
-	// 				image={imageUrl}
-	// 			/>
-	// 			<CardContent>
-	// 				<Typography gutterBottom variant="h5" component="div">
-	// 					{clientInfo.profileName}
-	// 				</Typography>
-	// 				<Typography variant="body1" color="text.primary">
-	// 					{clientInfo.onlineMessage}
-	// 				</Typography>
-	//
-	// 				<Typography variant="body1" color="text.primary">
-	// 					{readNum}
-	// 				</Typography>
-	//
-	// 				<Typography sx={{marginTop: 1}} variant="body2" color="text.secondary">
-	// 					나이: {clientInfo.age} <br/>
-	// 					목표: {clientInfo.goal} <br/>
-	// 					읽은 책: {clientInfo.read} 권 <br/>
-	// 					{clientInfo.review ? `작성한 리뷰: ${clientInfo.review} 개`:`작성한 리뷰: 0 개`} <br/>
-	// 					{clientInfo.like ? `좋아요: ${clientInfo.like}`: ``}
-	// 				</Typography>
-	// 			</CardContent>
-	// 		</CardActionArea>
-	// 		<CardActions>
-	// 			<Button size="small">Share</Button>
-	// 			<Button size="small">Learn More</Button>
-	// 		</CardActions>
-	// 	</Card>
-	// );
 });
 
 export default UserCard;

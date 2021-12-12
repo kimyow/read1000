@@ -15,7 +15,7 @@ const UserAvatar = ({user}) => {
 			console.log('download_url=', value)
 			setImageLink(value)
 		});
-	}, [user]);
+	}, [user, userUrl]);
 
 	return (
 		<Avatar src={imageLink} alt="No image"/>

@@ -98,16 +98,11 @@ const Book = ({book}) => {
 
 	return (
 		<div>
-			<Container
-				sx={{
-					width: 100,
-					height: 150,
-					alignItems: 'center'
-				}}
-			>
+			<Container className="bookImgContainer">
 				{
 					imageUrl && imageUrl.startsWith("http") ?
-						<img onClick={handleClickOpen} className='bookImg' src={imageUrl} alt={book[2]}/> :
+						<img onClick={handleClickOpen} className='bookImg' src={imageUrl} alt={book[2]}/>
+						:
 						<div onClick={handleClickOpen} className="image">
 							<img className='bookImg' src="" alt=""/>
 								<div className="text">
@@ -122,6 +117,7 @@ const Book = ({book}) => {
 				aria-labelledby="customized-dialog-title"
 				aria-describedby="modal-modal-description"
 				scroll={'paper'}
+				className="dialogStyle"
 			>
 				<DialogContent id="modal-modal-description" sx={{ mt: 2 }}>
 					<DialogTitle id="modal-modal-title" variant="h6" component="h2">

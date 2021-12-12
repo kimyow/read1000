@@ -25,7 +25,7 @@ const ReviewList = ({isbn}) => {
 			});
 			setReviewList(itemList);
 		});
-	}, []);
+	}, [isbn]);
 
 	return (
 			reviewList ?

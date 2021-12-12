@@ -23,7 +23,7 @@ const Review = ({review}) => {
 			console.log("clientInfo =>", doc.data());
 			setClientInfo(doc.data());
 		});
-	}, [])
+	}, [user.email, user.profileId])
 
 	return (
 		<ListItem alignItems="flex-start">

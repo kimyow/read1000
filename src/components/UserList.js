@@ -9,7 +9,7 @@ import {
 } from "../const";
 import {collection, getDocs, limit, orderBy, query, where} from "firebase/firestore";
 import {fbDB} from "../firebase/features";
-import {useContext, useEffect, useMemo, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {MyContext} from "../hooks/reducer";
 import UserCard from "./UserCard";
 import Box from "@mui/material/Box";
@@ -84,10 +84,6 @@ const UserList = () => {
             setError(e);
         }
     }, [mode]);
-
-    const currentMode = useMemo(() => {
-
-    }, []);
 
     if (mode !== SCREEN_MODE_USER_RANK_MONTHLY &&
         mode !== SCREEN_MODE_USER_RANK_WEEKLY &&
