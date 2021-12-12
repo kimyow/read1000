@@ -7,7 +7,8 @@ import stateReducer, {initValues, MyContext} from "./hooks/reducer";
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
 import BookShelf from "./components/BookShelf";
 import Home from "./components/Home";
-
+import {ThemeProvider} from "@mui/styles";
+import {createTheme} from "@mui/material";
 
 const useFirebaseAuthentication = () => {
     const [authUser, setAuthUser] = useState(null);
@@ -60,15 +61,19 @@ function App(props) {
         }
     }, [authUser]);
 
+    const theme = createTheme();
+
     return (
         <MyContext.Provider value={{state, dispatch, logout}}>
-            <div>
-                <ResponsiveAppBar props={props} user={authUser} />
-                <Signin />
-                <Home />
-                <UserList />
-                <BookShelf />
-            </div>
+            <ThemeProvider theme={theme}>
+                <div>
+                    <ResponsiveAppBar props={props} user={authUser} />
+                    <Signin />
+                    <Home />
+                    <UserList />
+                    <BookShelf />
+                </div>
+            </ThemeProvider>
         </MyContext.Provider>
     );
 }

@@ -1,9 +1,11 @@
-import {Button, Card, CardActionArea, CardActions, CardContent, CardMedia} from "@mui/material";
+import {Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Slider} from "@mui/material";
 import Typography from "@mui/material/Typography";
-import {useContext, useEffect, useState} from "react";
+import cx from 'clsx';
+import {memo, useContext, useEffect, useState} from "react";
 import {getDownloadURL, ref} from "firebase/storage";
 import {fbDB, fbStorage} from "../firebase/features";
 import {doc, getDoc} from "firebase/firestore";
+import makeStyles from "@mui/styles/makeStyles";
 import {
 	ACTION_USER_SELECTED,
 	SCREEN_MODE_GOOD_WRITER,
@@ -12,6 +14,68 @@ import {
 	SCREEN_MODE_USER_RANK_WEEKLY
 } from "../const";
 import {MyContext} from "../hooks/reducer";
+import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
+
+const useStyles = makeStyles(({spacing, palette}) => {
+
+	const family =
+		'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+	return {
+		card: {
+			display: 'flex',
+			padding: spacing(2),
+			minWidth: 288,
+			width: 300,
+			margin: spacing(1),
+			borderRadius: 12,
+			boxShadow: '0 2px 4px 0 rgba(138, 148, 159, 0.2)',
+			'& > *:nth-child(1)': {
+				marginRight: spacing(2),
+			},
+			'& > *:nth-child(2)': {
+				flex: 'auto',
+			},
+		},
+		avatar: {},
+		heading: {
+			fontFamily: family,
+			fontSize: 16,
+			marginBottom: 0,
+		},
+		subheader: {
+			fontFamily: family,
+			fontSize: 14,
+			color: palette.grey[600],
+			letterSpacing: '1px',
+			marginBottom: 4,
+		},
+		value: {
+			marginLeft: 8,
+			fontSize: 14,
+			color: palette.grey[500],
+		},
+	};
+});
+
+const useSliderStyles = makeStyles(() => ({
+	root: {
+		height: 4,
+	},
+	rail: {
+		borderRadius: 10,
+		height: 4,
+		backgroundColor: 'rgb(202,211,216)',
+	},
+	track: {
+		borderRadius: 10,
+		height: 4,
+		backgroundColor: 'rgb(117,156,250)',
+	},
+	thumb: {
+		display: 'none',
+	},
+}));
 
 const queryClientInfo = async (email, profileId) => {
 	const q = doc(fbDB, 'ClientInfoDataBase', `${email}_${profileId}`);
@@ -22,7 +86,7 @@ const handleCardClick = (dispatch, clientInfo) => {
 	dispatch({type: ACTION_USER_SELECTED, user: clientInfo});
 }
 
-const UserCard = ({userItem, screenMode}) => {
+const UserCard = memo(({userItem, screenMode}) => {
 	const {dispatch} = useContext(MyContext);
 	const userUrl = userItem.email ? `${userItem.email}_${userItem.profileId}`: '';
 	const [imageUrl, setImageUrl] = useState(null);
@@ -54,55 +118,82 @@ const UserCard = ({userItem, screenMode}) => {
 
 	}, [userItem]);
 
-	let readNum = '';
+	let prefix = '';
+	let postfix = ' 읽었습니다.';
 
 	if (screenMode === SCREEN_MODE_USER_RANK_DAILY) {
-		readNum = `오늘 총 ${userItem.read}권 읽었습니다.`;
+		prefix = " 오늘 ";
 	} else if (screenMode === SCREEN_MODE_USER_RANK_WEEKLY) {
-		readNum = `이번 주에 총 ${userItem.read}권 읽었습니다.`;
+		prefix = " 이번 주 ";
 	} else if (screenMode === SCREEN_MODE_USER_RANK_MONTHLY) {
-		readNum = `이번 달에 총 ${userItem.read}권 읽었습니다.`;
+		prefix = " 이번 달 ";
 	} else if (screenMode === SCREEN_MODE_GOOD_WRITER) {
-		readNum = `좋아요: ${userItem.like}`;
+		prefix = " 좋아요: ";
+		postfix = "";
 	}
 
+	const styles = useStyles();
+	const sliderStyles = useSliderStyles();
+
+	const progressValue = clientInfo && clientInfo.read && clientInfo.goal ?
+		Math.floor((clientInfo.read * 100) / clientInfo.goal) : 0;
+
 	return (
-		<Card sx={{ width: 280, minWidth: 245, maxWidth: 345, margin: 1}}>
-			<CardActionArea
-				onClick={() => {handleCardClick(dispatch, clientInfo);}}>
-				<CardMedia
-					component="img"
-					alt="profile image"
-					height="300em"
-					image={imageUrl}
-				/>
-				<CardContent>
-					<Typography gutterBottom variant="h5" component="div">
-						{clientInfo.profileName}
-					</Typography>
-					<Typography variant="body1" color="text.primary">
-						{clientInfo.onlineMessage}
-					</Typography>
-
-					<Typography variant="body1" color="text.primary">
-						{readNum}
-					</Typography>
-
-					<Typography sx={{marginTop: 1}} variant="body2" color="text.secondary">
-						나이: {clientInfo.age} <br/>
-						목표: {clientInfo.goal} <br/>
-						읽은 책: {clientInfo.read} 권 <br/>
-						{clientInfo.review ? `작성한 리뷰: ${clientInfo.review} 개`:`작성한 리뷰: 0 개`} <br/>
-						{clientInfo.like ? `좋아요: ${clientInfo.like}`: ``}
-					</Typography>
-				</CardContent>
-			</CardActionArea>
-			<CardActions>
-				<Button size="small">Share</Button>
-				<Button size="small">Learn More</Button>
-			</CardActions>
+		<Card className={cx(styles.card)} elevation={0}
+		      onClick={() => {handleCardClick(dispatch, clientInfo);}}>
+			<Avatar src={imageUrl} className={styles.avatar} />
+			<Box>
+				<h3 className={styles.heading}>{clientInfo.profileName}</h3>
+				<p className={styles.subheader}>{clientInfo.age}세 •
+					{prefix} <span style={{color: "brown"}}>{
+						screenMode === SCREEN_MODE_GOOD_WRITER ?
+							userItem.like: userItem.read}</span> {postfix}
+				</p>
+				<Box display={'flex'} alignItems={'center'}>
+					<Slider classes={sliderStyles} value={progressValue}/>
+					<span className={styles.value}>{clientInfo.read}/{clientInfo.goal}</span>
+				</Box>
+			</Box>
 		</Card>
 	);
-}
+
+	// return (
+	// 	<Card sx={{ width: 280, minWidth: 245, maxWidth: 345, margin: 1}}>
+	// 		<CardActionArea
+	// 			onClick={() => {handleCardClick(dispatch, clientInfo);}}>
+	// 			<CardMedia
+	// 				component="img"
+	// 				alt="profile image"
+	// 				height="300em"
+	// 				image={imageUrl}
+	// 			/>
+	// 			<CardContent>
+	// 				<Typography gutterBottom variant="h5" component="div">
+	// 					{clientInfo.profileName}
+	// 				</Typography>
+	// 				<Typography variant="body1" color="text.primary">
+	// 					{clientInfo.onlineMessage}
+	// 				</Typography>
+	//
+	// 				<Typography variant="body1" color="text.primary">
+	// 					{readNum}
+	// 				</Typography>
+	//
+	// 				<Typography sx={{marginTop: 1}} variant="body2" color="text.secondary">
+	// 					나이: {clientInfo.age} <br/>
+	// 					목표: {clientInfo.goal} <br/>
+	// 					읽은 책: {clientInfo.read} 권 <br/>
+	// 					{clientInfo.review ? `작성한 리뷰: ${clientInfo.review} 개`:`작성한 리뷰: 0 개`} <br/>
+	// 					{clientInfo.like ? `좋아요: ${clientInfo.like}`: ``}
+	// 				</Typography>
+	// 			</CardContent>
+	// 		</CardActionArea>
+	// 		<CardActions>
+	// 			<Button size="small">Share</Button>
+	// 			<Button size="small">Learn More</Button>
+	// 		</CardActions>
+	// 	</Card>
+	// );
+});
 
 export default UserCard;

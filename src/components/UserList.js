@@ -28,7 +28,7 @@ const queryCallAsync = async (mode) => {
 
     console.log(mode);
 
-    const retrieveNum = 4;
+    const retrieveNum = 50;
 
     if (mode === SCREEN_MODE_USER_RANK_DAILY) {
         path = `UserRank/Rank_Day_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}/Rank_Day_${date.getFullYear()}_${date.getMonth() + 1}_${date.getDate()}`;

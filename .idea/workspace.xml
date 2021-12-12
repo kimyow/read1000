@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5df12b9c-84db-49a9-aac1-1b2cccaec1eb" name="Changes" comment="도서 정보 화면 보완&#10;읽은 사람 리스트 / 리뷰 리스트 추가">
-      <change afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
+    <list default="true" id="5df12b9c-84db-49a9-aac1-1b2cccaec1eb" name="Changes" comment="각 컴포넌트별 데이타로딩중 화면 중간에 띄워주고 화면 갱신하기">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Book.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Book.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Book.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Book.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BookShelf.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BookShelf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ResponsiveAppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ResponsiveAppBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserList.js" afterDir="false" />
     </list>
@@ -62,7 +59,7 @@
       <updated>1637205884182</updated>
       <workItem from="1637205885488" duration="15000" />
       <workItem from="1637207032975" duration="16160000" />
-      <workItem from="1637320133389" duration="146078000" />
+      <workItem from="1637320133389" duration="151885000" />
     </task>
     <task id="LOCAL-00001" summary="오늘의 독서왕 표시">
       <created>1637293877797</created>
@@ -120,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639127610050</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="각 컴포넌트별 데이타로딩중 화면 중간에 띄워주고 화면 갱신하기">
+      <created>1639222658245</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1639222658245</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +150,7 @@
     <MESSAGE value="react nav 적용. material ui library 적용 2" />
     <MESSAGE value="react nav 적용. material ui library 적용 3" />
     <MESSAGE value="도서 정보 화면 보완&#10;읽은 사람 리스트 / 리뷰 리스트 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="도서 정보 화면 보완&#10;읽은 사람 리스트 / 리뷰 리스트 추가" />
+    <MESSAGE value="각 컴포넌트별 데이타로딩중 화면 중간에 띄워주고 화면 갱신하기" />
+    <option name="LAST_COMMIT_MESSAGE" value="각 컴포넌트별 데이타로딩중 화면 중간에 띄워주고 화면 갱신하기" />
   </component>
 </project>
