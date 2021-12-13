@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/read1000/static/css/main.e5139a56.chunk.css",
-    "main.js": "/read1000/static/js/main.96c5a34f.chunk.js",
-    "main.js.map": "/read1000/static/js/main.96c5a34f.chunk.js.map",
+    "main.js": "/read1000/static/js/main.eb5d669e.chunk.js",
+    "main.js.map": "/read1000/static/js/main.eb5d669e.chunk.js.map",
     "runtime-main.js": "/read1000/static/js/runtime-main.2d5e7063.js",
     "runtime-main.js.map": "/read1000/static/js/runtime-main.2d5e7063.js.map",
     "static/css/2.383c0125.chunk.css": "/read1000/static/css/2.383c0125.chunk.css",
@@ -14,7 +14,7 @@
     "static/css/2.383c0125.chunk.css.map": "/read1000/static/css/2.383c0125.chunk.css.map",
     "static/css/main.e5139a56.chunk.css.map": "/read1000/static/css/main.e5139a56.chunk.css.map",
     "static/js/2.6d4cadf5.chunk.js.LICENSE.txt": "/read1000/static/js/2.6d4cadf5.chunk.js.LICENSE.txt",
-    "static/media/bookshelf.538b951c.png": "/read1000/static/media/bookshelf.538b951c.png",
+    "static/media/bookshelf2.4ebac43f.png": "/read1000/static/media/bookshelf2.4ebac43f.png",
     "static/media/icon.30816d4f.png": "/read1000/static/media/icon.30816d4f.png",
     "static/media/image1.26ee4fa8.svg": "/read1000/static/media/image1.26ee4fa8.svg",
     "static/media/user_card.cd3ccae2.png": "/read1000/static/media/user_card.cd3ccae2.png"
@@ -24,6 +24,6 @@
     "static/css/2.383c0125.chunk.css",
     "static/js/2.6d4cadf5.chunk.js",
     "static/css/main.e5139a56.chunk.css",
-    "static/js/main.96c5a34f.chunk.js"
+    "static/js/main.eb5d669e.chunk.js"
   ]
 }
