@@ -1,25 +1,29 @@
 {
   "files": {
-    "main.css": "/read1000/static/css/main.605475e2.chunk.css",
-    "main.js": "/read1000/static/js/main.23163c54.chunk.js",
-    "main.js.map": "/read1000/static/js/main.23163c54.chunk.js.map",
-    "runtime-main.js": "/read1000/static/js/runtime-main.94a91c87.js",
-    "runtime-main.js.map": "/read1000/static/js/runtime-main.94a91c87.js.map",
+    "main.css": "/read1000/static/css/main.e5139a56.chunk.css",
+    "main.js": "/read1000/static/js/main.96c5a34f.chunk.js",
+    "main.js.map": "/read1000/static/js/main.96c5a34f.chunk.js.map",
+    "runtime-main.js": "/read1000/static/js/runtime-main.2d5e7063.js",
+    "runtime-main.js.map": "/read1000/static/js/runtime-main.2d5e7063.js.map",
     "static/css/2.383c0125.chunk.css": "/read1000/static/css/2.383c0125.chunk.css",
-    "static/js/2.c2b9d287.chunk.js": "/read1000/static/js/2.c2b9d287.chunk.js",
-    "static/js/2.c2b9d287.chunk.js.map": "/read1000/static/js/2.c2b9d287.chunk.js.map",
-    "static/js/3.6f726fe1.chunk.js": "/read1000/static/js/3.6f726fe1.chunk.js",
-    "static/js/3.6f726fe1.chunk.js.map": "/read1000/static/js/3.6f726fe1.chunk.js.map",
+    "static/js/2.6d4cadf5.chunk.js": "/read1000/static/js/2.6d4cadf5.chunk.js",
+    "static/js/2.6d4cadf5.chunk.js.map": "/read1000/static/js/2.6d4cadf5.chunk.js.map",
+    "static/js/3.5c44ebb4.chunk.js": "/read1000/static/js/3.5c44ebb4.chunk.js",
+    "static/js/3.5c44ebb4.chunk.js.map": "/read1000/static/js/3.5c44ebb4.chunk.js.map",
     "index.html": "/read1000/index.html",
     "static/css/2.383c0125.chunk.css.map": "/read1000/static/css/2.383c0125.chunk.css.map",
-    "static/css/main.605475e2.chunk.css.map": "/read1000/static/css/main.605475e2.chunk.css.map",
-    "static/js/2.c2b9d287.chunk.js.LICENSE.txt": "/read1000/static/js/2.c2b9d287.chunk.js.LICENSE.txt"
+    "static/css/main.e5139a56.chunk.css.map": "/read1000/static/css/main.e5139a56.chunk.css.map",
+    "static/js/2.6d4cadf5.chunk.js.LICENSE.txt": "/read1000/static/js/2.6d4cadf5.chunk.js.LICENSE.txt",
+    "static/media/bookshelf.538b951c.png": "/read1000/static/media/bookshelf.538b951c.png",
+    "static/media/icon.30816d4f.png": "/read1000/static/media/icon.30816d4f.png",
+    "static/media/image1.26ee4fa8.svg": "/read1000/static/media/image1.26ee4fa8.svg",
+    "static/media/user_card.cd3ccae2.png": "/read1000/static/media/user_card.cd3ccae2.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.94a91c87.js",
+    "static/js/runtime-main.2d5e7063.js",
     "static/css/2.383c0125.chunk.css",
-    "static/js/2.c2b9d287.chunk.js",
-    "static/css/main.605475e2.chunk.css",
-    "static/js/main.23163c54.chunk.js"
+    "static/js/2.6d4cadf5.chunk.js",
+    "static/css/main.e5139a56.chunk.css",
+    "static/js/main.96c5a34f.chunk.js"
   ]
 }
