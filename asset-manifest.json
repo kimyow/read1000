@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/read1000/static/css/main.2281aaf4.chunk.css",
-    "main.js": "/read1000/static/js/main.35f7eaa1.chunk.js",
-    "main.js.map": "/read1000/static/js/main.35f7eaa1.chunk.js.map",
-    "runtime-main.js": "/read1000/static/js/runtime-main.11261bac.js",
-    "runtime-main.js.map": "/read1000/static/js/runtime-main.11261bac.js.map",
+    "main.css": "/read1000/static/css/main.518d22a2.chunk.css",
+    "main.js": "/read1000/static/js/main.d3c63ecb.chunk.js",
+    "main.js.map": "/read1000/static/js/main.d3c63ecb.chunk.js.map",
+    "runtime-main.js": "/read1000/static/js/runtime-main.2d5e7063.js",
+    "runtime-main.js.map": "/read1000/static/js/runtime-main.2d5e7063.js.map",
     "static/css/2.383c0125.chunk.css": "/read1000/static/css/2.383c0125.chunk.css",
-    "static/js/2.79403d95.chunk.js": "/read1000/static/js/2.79403d95.chunk.js",
-    "static/js/2.79403d95.chunk.js.map": "/read1000/static/js/2.79403d95.chunk.js.map",
-    "static/js/3.0d42c3ab.chunk.js": "/read1000/static/js/3.0d42c3ab.chunk.js",
-    "static/js/3.0d42c3ab.chunk.js.map": "/read1000/static/js/3.0d42c3ab.chunk.js.map",
+    "static/js/2.641baf7c.chunk.js": "/read1000/static/js/2.641baf7c.chunk.js",
+    "static/js/2.641baf7c.chunk.js.map": "/read1000/static/js/2.641baf7c.chunk.js.map",
+    "static/js/3.5c44ebb4.chunk.js": "/read1000/static/js/3.5c44ebb4.chunk.js",
+    "static/js/3.5c44ebb4.chunk.js.map": "/read1000/static/js/3.5c44ebb4.chunk.js.map",
     "index.html": "/read1000/index.html",
     "static/css/2.383c0125.chunk.css.map": "/read1000/static/css/2.383c0125.chunk.css.map",
-    "static/css/main.2281aaf4.chunk.css.map": "/read1000/static/css/main.2281aaf4.chunk.css.map",
-    "static/js/2.79403d95.chunk.js.LICENSE.txt": "/read1000/static/js/2.79403d95.chunk.js.LICENSE.txt",
+    "static/css/main.518d22a2.chunk.css.map": "/read1000/static/css/main.518d22a2.chunk.css.map",
+    "static/js/2.641baf7c.chunk.js.LICENSE.txt": "/read1000/static/js/2.641baf7c.chunk.js.LICENSE.txt",
     "static/media/bookshelf2.4ebac43f.png": "/read1000/static/media/bookshelf2.4ebac43f.png",
     "static/media/icon.30816d4f.png": "/read1000/static/media/icon.30816d4f.png",
     "static/media/image1.26ee4fa8.svg": "/read1000/static/media/image1.26ee4fa8.svg",
     "static/media/user_card.cd3ccae2.png": "/read1000/static/media/user_card.cd3ccae2.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.11261bac.js",
+    "static/js/runtime-main.2d5e7063.js",
     "static/css/2.383c0125.chunk.css",
-    "static/js/2.79403d95.chunk.js",
-    "static/css/main.2281aaf4.chunk.css",
-    "static/js/main.35f7eaa1.chunk.js"
+    "static/js/2.641baf7c.chunk.js",
+    "static/css/main.518d22a2.chunk.css",
+    "static/js/main.d3c63ecb.chunk.js"
   ]
 }
