@@ -16,8 +16,8 @@ import {MyContext} from "../hooks/reducer";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 
-const useStyles = makeStyles(({spacing, palette}) => {
-
+const useUserCardStyles = makeStyles(({spacing, palette}) => {
+	console.log("useUserCardStyles", spacing, palette);
 	const family =
 		'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 	return {
@@ -135,7 +135,7 @@ const UserCard = memo(({userItem, screenMode}) => {
 		postfix = "";
 	}
 
-	const styles = useStyles();
+	const styles = useUserCardStyles();
 	const sliderStyles = useSliderStyles();
 
 	const progressValue = clientInfo && clientInfo.read && clientInfo.goal ?
