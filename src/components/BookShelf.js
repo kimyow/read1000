@@ -7,11 +7,12 @@ import Book from "./Book";
 import Box from "@mui/material/Box";
 import UserAvatar from "./UserAvatar";
 import './Book.css';
+import {CircularProgress} from "@mui/material";
 
 
 const BookShelf = () => {
 	const {state} = useContext(MyContext);
-	const [contents, setContents] = useState([]);
+	const [contents, setContents] = useState(null);
 	const [error, setError] = useState(null);
 	console.log('BookShelf state=>', state);
 	const mode = state.mode;
@@ -20,7 +21,7 @@ const BookShelf = () => {
 	useEffect(()=> {
 		if (user) {
 			console.log('BookShelf download db...', user);
-			setContents([]);
+			setContents(null);
 			setError(null);
 			let storageRef = ref(fbStorage, `/databases/${user.email}.db`)
 			getDownloadURL(storageRef).then(value => {
@@ -69,7 +70,18 @@ const BookShelf = () => {
 			verticalAlign: 'middle',
 			height: '100rem'
 		}}>
-			<h5>사용자의 데이터베이스 로딩중에 오류가 발생했습니다.</h5>
+			<h5>도서 데이터베이스 로딩중에 오류가 발생했습니다.</h5>
+		</Box>
+	);
+
+	if (contents === null) return (
+		<Box marginTop='10em' sx={{
+			textAlign: 'center',
+			verticalAlign: 'middle',
+			height: '100rem'
+		}}>
+			<CircularProgress className={"circularProgress"} color="inherit"/>
+			<h6>도서 데이터베이스를 로딩중입니다...</h6>
 		</Box>
 	);
 

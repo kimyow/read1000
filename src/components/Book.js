@@ -106,7 +106,7 @@ const Book = ({book}) => {
 						<div onClick={handleClickOpen} className="image">
 							<img className='bookImg' src="" alt=""/>
 								<div className="text">
-									<h6>{book[2]}</h6>
+									{book[2]}
 								</div>
 						</div>
 				}

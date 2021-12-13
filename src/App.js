@@ -9,6 +9,7 @@ import BookShelf from "./components/BookShelf";
 import Home from "./components/Home";
 import {ThemeProvider} from "@mui/styles";
 import {createTheme} from "@mui/material";
+import "./App.css";
 
 const useFirebaseAuthentication = () => {
     const [authUser, setAuthUser] = useState(null);

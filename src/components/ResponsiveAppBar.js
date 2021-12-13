@@ -29,7 +29,7 @@ import PropTypes from "prop-types";
 const pages = [
 	{
 		mode: SCREEN_MODE_GOOD_WRITER,
-		value: '좋은 글을 쓰는 친구들',
+		value: '인기 리뷰어',
 	},
 	// {
 	// 	mode: SCREEN_MODE_FAMOUS_BOOK,
@@ -127,7 +127,11 @@ const ResponsiveAppBar = (props) => {
 		}
 	}, [user]);
 
-
+	if (!user) {
+		return (
+			<div/>
+		)
+	}
 
 	const handleOpenNavMenu = (event) => {
 		console.log("handleOpenNavMenu=>", event.currentTarget);
@@ -137,6 +141,9 @@ const ResponsiveAppBar = (props) => {
 		console.log("handleOpenUserMenu=>", event.currentTarget);
 		setAnchorElUser(event.currentTarget);
 	};
+	const handleHomeMenu = () => {
+		dispatch({type: ACTION_CHANGE_MODE, mode: SCREEN_MODE_INIT});
+	}
 
 	const handleCloseNavMenu = (item) => {
 		console.log("handleCloseNavMenu", item);
@@ -161,23 +168,24 @@ const ResponsiveAppBar = (props) => {
 		setAnchorElUser(null);
 	};
 
-	let _className='';
-	if (state.mode === SCREEN_MODE_SIGN_IN) {
-		_className = "hidden";
-	}
 	return (
 		<HideOnScroll {...props}>
-		<AppBar>
+		<AppBar sx={{
+			background: '#F08080'
+		}}>
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
-					<Typography
-						variant="h6"
-						noWrap
-						component="div"
-						sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-					>
-						천권읽기
-					</Typography>
+					<div style={ {cursor: 'pointer'}} onClick={handleHomeMenu}>
+						<Typography
+							variant="h5"
+							noWrap
+							component="div"
+							fontFamily={"Gamja Flower"}
+							sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+						>
+							천권읽기
+						</Typography>
+					</div>
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						<IconButton
@@ -220,6 +228,7 @@ const ResponsiveAppBar = (props) => {
 						variant="h6"
 						noWrap
 						component="div"
+						fontFamily={"Gamja Flower"}
 						sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
 					>
 						{title}

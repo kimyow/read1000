@@ -38,8 +38,8 @@ const useStyles = makeStyles(({spacing, palette}) => {
 			cursor: 'pointer'
 		},
 		avatar: {
-			width: 100,
-			height: 100
+			width: 80,
+			height: 80
 		},
 		heading: {
 			fontFamily: family,

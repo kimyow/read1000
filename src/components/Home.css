@@ -1,0 +1,101 @@
+
+.img-icon-book {
+    width: 125px;
+    border-radius: 15px;
+}
+
+.logo {
+    width:300px;
+    height:300px;
+}
+
+.userCard {
+    margin-top: 20px;
+    width: 50%;
+}
+
+.main-title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 60px;
+    color: #477F8F;
+    font-weight: bolder;
+    font-family: 'Gamja Flower';
+}
+
+.sub-title {
+    width: 90%;
+    margin: auto;
+    height: 88px;
+    font-size: 28px;
+    line-height: 45px;
+    color: #465776;
+    text-align: center;
+    font-weight: bolder;
+    font-family: 'Gamja Flower';
+}
+
+.main-description {
+    margin: auto;
+    width: 90%;
+    font-size: 25px;
+    line-height: 39px;
+    color: #005B97;
+    text-align: center;
+    overflow-wrap: break-word;
+    font-family: 'Gamja Flower';
+    font-weight: bolder;
+}
+
+.margin-top-desc {
+    margin-top: 100px;
+}
+
+.link-button {
+    margin: 20px;
+    font-size: 20px;
+    color: white;
+    font-weight: bolder;
+    font-family: 'Gamja Flower';
+}
+
+@media screen and (max-width: 600px){
+    .logo {
+        width:200px;
+        height:200px;
+    }
+
+    .img-icon-book {
+        width: 75px;
+        border-radius: 15px;
+    }
+
+    .main-title {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 30px;
+    }
+
+    .sub-title {
+        height: 88px;
+        font-size: 22px;
+        line-height: 35px;
+    }
+
+    .main-description {
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: normal;
+    }
+
+    .margin-top-desc {
+        margin-top: 20px;
+    }
+
+    .link-button {
+        margin: 10px;
+        font-size: 18px;
+    }
+
+}
