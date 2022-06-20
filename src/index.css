@@ -5,8 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: rgb(240,128,128);
-  background: linear-gradient(15deg, rgba(240,128,128,1) 0%, rgba(255,228,225,1) 64%);
+  /*background: rgb(240,128,128);*/
+  /*background: linear-gradient(15deg, rgba(240,128,128,1) 0%, rgba(255,228,225,1) 64%);*/
 }
 
 code {
